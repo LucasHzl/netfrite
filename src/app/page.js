@@ -46,24 +46,48 @@ export default function Home() {
       .catch(error => console.log(error))
   }, []);
 
-  // console.log(movies);
-  movies.forEach(element => {
-    console.log(element.title);
-  });
+  const [topRatedMovies, setTopRatedMovies] = useState([]);
 
-  Object.entries(movies).forEach(([key, value]) => {
-    console.log(key);
-    console.log(value.title);
-  });
+  useEffect(() => {
+    const options = {
+      method: 'GET',
+      headers: {
+        accept: 'application/json',
+        Authorization: 'Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiIyMzhhYTY5NGI2MDY4NGU2OWI3NGI3Y2QzYTIzNGQ1NiIsInN1YiI6IjY2NDRhM2JkMjMzNThiMWE5NDNhYmY1NCIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.p0hvR017eD41XRdyfDaQeTSmkVczKBsOHP2-_6M6V2k'
+      }
+    };
+
+    fetch('https://api.themoviedb.org/3/movie/top_rated?language=en-US&page=1', options)
+      .then(response => response.json())
+      .then(response => setTopRatedMovies(response.results))
+      .catch(error => console.log(error))
+  }, []);
+
+
+  const [upcomingMovies, setUpcomingMovies] = useState([]);
+
+  useEffect(() => {
+    const options = {
+      method: 'GET',
+      headers: {
+        accept: 'application/json',
+        Authorization: 'Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiIyMzhhYTY5NGI2MDY4NGU2OWI3NGI3Y2QzYTIzNGQ1NiIsInN1YiI6IjY2NDRhM2JkMjMzNThiMWE5NDNhYmY1NCIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.p0hvR017eD41XRdyfDaQeTSmkVczKBsOHP2-_6M6V2k'
+      }
+    };
+
+    fetch('https://api.themoviedb.org/3/movie/upcoming?language=en-US&page=1', options)
+      .then(response => response.json())
+      .then(response => setUpcomingMovies(response.results))
+      .catch(error => console.log(error))
+  }, []);
 
   return (
     <>
       <Navbar />
-      <HeroBanner />
-
+      <HeroBanner background = { movies[0] }/>
       <main>
       <div className="flex justify-center items-center mt-12 flex-col">
-          <h2 className="text-white">Les mieux notés</h2>
+          <h2 className="text-white mb-4 text-2xl">Les plus populaires</h2>
           <Carousel
             opts={{
               align: "center",
@@ -73,12 +97,15 @@ export default function Home() {
             <CarouselContent>
               {movies.map((movie, index) => (
                 <CarouselItem key={index} className="md:basis-1/2 lg:basis-1/3">
-                  <div className="p-1">
+                  <div className="">
                     <Card>
+                    <h2 className="font-semibold text-center mt-2">{index}</h2>
                       <CardContent className="flex aspect-square items-center justify-center p-6">
-                        <span className="text-3xl font-semibold">{movie.title}</span>
+                        <img src={`https://image.tmdb.org/t/p/w500${movie.poster_path}`} alt={`Affiche du film ${movie.title}`} className="w-full h-full"/>
                       </CardContent>
+                      <h2 className="font-semibold text-center mb-2">Note : {movie.vote_average}/10</h2>
                     </Card>
+                      <h2 className="text-white font-semibold text-center mt-2 underline">{movie.title}</h2>
                   </div>
                 </CarouselItem>
               ))}
@@ -89,7 +116,7 @@ export default function Home() {
         </div>
 
         <div className="flex justify-center items-center mt-12 flex-col">
-          <h2 className="text-white">Les mieux notés</h2>
+          <h2 className="text-white mb-4 text-2xl">Les mieux notés</h2>
           <Carousel
             opts={{
               align: "center",
@@ -97,14 +124,17 @@ export default function Home() {
             className="w-full max-w-lg"
           >
             <CarouselContent>
-              {movies.map((movie, index) => (
+              {topRatedMovies.map((topRatedMovie, index) => (
                 <CarouselItem key={index} className="md:basis-1/2 lg:basis-1/3">
-                  <div className="p-1">
+                  <div className="">
                     <Card>
+                    <h2 className="font-semibold text-center mt-2">{index}</h2>
                       <CardContent className="flex aspect-square items-center justify-center p-6">
-                        <span className="text-3xl font-semibold">{movie.title}</span>
+                        <img src={`https://image.tmdb.org/t/p/w500${topRatedMovie.poster_path}`} alt={`Affiche du film ${topRatedMovie.title}`} className="w-full h-full"/>
                       </CardContent>
+                      <h2 className="font-semibold text-center mb-2">Note : {topRatedMovie.vote_average}/10</h2>
                     </Card>
+                      <h2 className="text-white font-semibold text-center mt-2 underline">{topRatedMovie.title}</h2>
                   </div>
                 </CarouselItem>
               ))}
@@ -114,23 +144,26 @@ export default function Home() {
           </Carousel>
         </div>
 
-        <div className="flex justify-center items-center mt-12 mb-16 flex-col">
-          <h2 className="text-white">Prochaines sorties</h2>
+        <div className="flex justify-center items-center mt-12 mb-12 flex-col">
+          <h2 className="text-white mb-4 text-2xl">À venir</h2>
           <Carousel
             opts={{
-              align: "start",
+              align: "center",
             }}
             className="w-full max-w-lg"
           >
             <CarouselContent>
-              {Array.from({ length: 20 }).map((_, index) => (
+              {upcomingMovies.map((upcomingMovie, index) => (
                 <CarouselItem key={index} className="md:basis-1/2 lg:basis-1/3">
-                  <div className="p-1">
+                  <div className="">
                     <Card>
+                    <h2 className="font-semibold text-center mt-2">{index}</h2>
                       <CardContent className="flex aspect-square items-center justify-center p-6">
-                        <span className="text-3xl font-semibold">{index + 1}</span>
+                        <img src={`https://image.tmdb.org/t/p/w500${upcomingMovie.poster_path}`} alt={`Affiche du film ${upcomingMovie.title}`} className="w-full h-full"/>
                       </CardContent>
+                      <h2 className="font-semibold text-center mb-2">Note : {upcomingMovie.vote_average}/10</h2>
                     </Card>
+                      <h2 className="text-white font-semibold text-center mt-2 underline">{upcomingMovie.title}</h2>
                   </div>
                 </CarouselItem>
               ))}

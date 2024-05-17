@@ -1,5 +1,22 @@
-export default function HeroBanner() {
-    return(
-        <div className="w-screen h-96 flex justify-center items-center border-2 border-red-600 mt-8 mb-8">je suis la bannière</div>
-    )
+import React, { useEffect, useLayoutEffect, useState } from 'react';
+
+
+export default function HeroBanner({ background }) {
+    const [showImage, setShowImage] = useState(false);
+
+    useEffect(() => {
+        const timer = setTimeout(() => {
+            setShowImage(true);
+        }, 500);
+
+        return () => clearTimeout(timer);
+    }, [background]);
+
+    if (!showImage) {
+        return null;
+    }
+
+    return (
+        <img className="w-screen h-full flex justify-center items-center mb-12" src={`https://image.tmdb.org/t/p/original${background.backdrop_path}`} />
+    );
 }
