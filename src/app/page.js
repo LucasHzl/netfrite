@@ -81,9 +81,12 @@ export default function Home() {
       .catch(error => console.log(error))
   }, []);
 
+  const [search, setSearch] = useState()
+
   return (
     <>
-      <Navbar />
+      <Navbar setSearch = { setSearch }/>
+      <button onClick={() => handleSearch className="h-12 w-8 text-white">Rechercher</button>
       <HeroBanner background = { movies[0] }/>
       <main>
       <div className="flex justify-center items-center mt-12 flex-col">

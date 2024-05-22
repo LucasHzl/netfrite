@@ -42,7 +42,10 @@ export default function Navbar() {
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
               </svg>
             </span>
-            <input class="outline-none" type="text" placeholder="Rechercher" />
+            <input onChange={(event) => {
+              props.setSearch(event.target.value)
+            }} class="outline-none" type="search" id="search" placeholder="Rechercher" />
+            {/* <button className="">Rechercher</button> */}
           </div>
         </div>
       </nav>
