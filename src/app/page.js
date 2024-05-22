@@ -36,7 +36,7 @@ export default function Home() {
       method: 'GET',
       headers: {
         accept: 'application/json',
-        Authorization: 'Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiIyMzhhYTY5NGI2MDY4NGU2OWI3NGI3Y2QzYTIzNGQ1NiIsInN1YiI6IjY2NDRhM2JkMjMzNThiMWE5NDNhYmY1NCIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.p0hvR017eD41XRdyfDaQeTSmkVczKBsOHP2-_6M6V2k'
+        Authorization: ''
       }
     };
 
@@ -53,7 +53,7 @@ export default function Home() {
       method: 'GET',
       headers: {
         accept: 'application/json',
-        Authorization: 'Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiIyMzhhYTY5NGI2MDY4NGU2OWI3NGI3Y2QzYTIzNGQ1NiIsInN1YiI6IjY2NDRhM2JkMjMzNThiMWE5NDNhYmY1NCIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.p0hvR017eD41XRdyfDaQeTSmkVczKBsOHP2-_6M6V2k'
+        Authorization: ''
       }
     };
 
@@ -71,7 +71,7 @@ export default function Home() {
       method: 'GET',
       headers: {
         accept: 'application/json',
-        Authorization: 'Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiIyMzhhYTY5NGI2MDY4NGU2OWI3NGI3Y2QzYTIzNGQ1NiIsInN1YiI6IjY2NDRhM2JkMjMzNThiMWE5NDNhYmY1NCIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.p0hvR017eD41XRdyfDaQeTSmkVczKBsOHP2-_6M6V2k'
+        Authorization: ''
       }
     };
 
@@ -180,58 +180,5 @@ export default function Home() {
     </>
   );
 }
-
-
-// document.addEventListener("DOMContentLoaded", function() {
-//   let pokemonApiUrl = "https://pokeapi.co/api/v2/pokemon/?offset=&limit=1302";
-
-//   function fetchPokemon(pokemonApiUrl) {
-//       fetch(pokemonApiUrl)
-//       .then(response => response.json())
-//       .then(response => {
-//           response.results.forEach(element => {
-
-//               let newButton = document.createElement("button");
-//               newButton.setAttribute("id", "pokemonButton")
-//               newButton.textContent = element.name;
-
-//               let pokemonList = document.getElementById("pokemonList");
-//               pokemonList.appendChild(newButton);
-
-//               newButton.addEventListener("click", showInfo(element.url));
-
-//               function showInfo(url) {
-//                   console.log(url);
-//               }
-//           });
-//       })
-//       .catch(error => alert("Erreur : " + error))
-//   };
-
-//   fetchPokemon(pokemonApiUrl);
-// });
-
-
-
-// function popularMovies() {
-
-//   const options = {
-//     method: 'GET',
-//     headers: {
-//       accept: 'application/json',
-//       Authorization: 'Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiIyMzhhYTY5NGI2MDY4NGU2OWI3NGI3Y2QzYTIzNGQ1NiIsInN1YiI6IjY2NDRhM2JkMjMzNThiMWE5NDNhYmY1NCIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.p0hvR017eD41XRdyfDaQeTSmkVczKBsOHP2-_6M6V2k'
-//     }
-//   };
-
-//   fetch('https://api.themoviedb.org/3/movie/popular?language=en-US&page=1', options)
-//     .then(response => response.json())
-//     .then(response => response.results.forEach(element => {
-//       console.log(element.original_title);
-//     }))
-//     .catch(err => console.error(err));
-
-// }
-
-// popularMovies();
 
 
