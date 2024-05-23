@@ -107,13 +107,13 @@ export default function Home() {
               {movies.map((movie, index) => (
                 <CarouselItem key={index} className="md:basis-1/2 lg:basis-1/3">
                   <div className="">
-                    <Link href={`detail`} className="text-white">
-                      <Card className="bg-neutral-200">
-                        <h2 className="font-semibold text-center mt-2">{index}</h2>
+                    <Link href={`${movie.id}`} movieId={movie.id} className="text-white">
+                      <Card className="bg-black">
+                        <h2 className="font-semibold text-center mt-2 text-white">{index}</h2>
                         <CardContent className="flex aspect-square items-center justify-center p-6 ">
                           <img src={`https://image.tmdb.org/t/p/w500${movie.poster_path}`} alt={`Affiche du film ${movie.title}`} className="w-full h-full" />
                         </CardContent>
-                        <h2 className="font-semibold text-center mb-2">Note : {movie.vote_average}/10</h2>
+                        <h2 className="font-semibold text-center mb-2 text-white">Note : {movie.vote_average}/10</h2>
                       </Card>
                       <h2 className="text-white font-semibold text-center mt-2 underline">{movie.title}</h2>
                     </Link>
@@ -140,12 +140,12 @@ export default function Home() {
                 <CarouselItem key={index} className="md:basis-1/2 lg:basis-1/3">
                   <div className="">
                     <Link href={`detail`} className="text-white">
-                      <Card className="bg-neutral-200">
-                        <h2 className="font-semibold text-center mt-2">{index}</h2>
+                      <Card className="bg-black">
+                        <h2 className="font-semibold text-center mt-2 text-white">{index}</h2>
                         <CardContent className="flex aspect-square items-center justify-center p-6">
                           <img src={`https://image.tmdb.org/t/p/w500${topRatedMovie.poster_path}`} alt={`Affiche du film ${topRatedMovie.title}`} className="w-full h-full" />
                         </CardContent>
-                        <h2 className="font-semibold text-center mb-2">Note : {topRatedMovie.vote_average}/10</h2>
+                        <h2 className="font-semibold text-center mb-2 text-white">Note : {topRatedMovie.vote_average}/10</h2>
                       </Card>
                       <h2 className="text-white font-semibold text-center mt-2 underline">{topRatedMovie.title}</h2>
                     </Link>
@@ -171,12 +171,12 @@ export default function Home() {
                 <CarouselItem key={index} className="md:basis-1/2 lg:basis-1/3">
                   <div className="">
                     <Link href={`detail`} className="text-white">
-                      <Card className="bg-neutral-200">
-                        <h2 className="font-semibold text-center mt-2">{index}</h2>
+                      <Card className="bg-black">
+                        <h2 className="font-semibold text-center mt-2 text-white">{index}</h2>
                         <CardContent className="flex aspect-square items-center justify-center p-6">
                           <img src={`https://image.tmdb.org/t/p/w500${upcomingMovie.poster_path}`} alt={`Affiche du film ${upcomingMovie.title}`} className="w-full h-full" />
                         </CardContent>
-                        <h2 className="font-semibold text-center mb-2">Note : {upcomingMovie.vote_average}/10</h2>
+                        <h2 className="font-semibold text-center mb-2 text-white">Note : {upcomingMovie.vote_average}/10</h2>
                       </Card>
                     </Link>
                     <h2 className="text-white font-semibold text-center mt-2 underline">{upcomingMovie.title}</h2>
