@@ -26,24 +26,11 @@ const SearchPage = () => {
         fetch(`https://api.themoviedb.org/3/search/movie?query=${query}`, options)
             .then(response => response.json())
             .then(data => {
-                //console.log(data);
-                setMovie(data);
+                console.log(data);
+                setSearchResults(data.results);
             })
             .catch(error => console.log(error));
-
-        const fetchSearchPage = async () => {
-            try {
-                const queryString = Array.isArray(query) ? query.join(',') : query;
-                const data = await searchMovies(queryString);
-                setSearchResults(data.results);
-            } catch (error) {
-                console.error(error);
-            }
-        };
-
-        fetchSearchPage();
     }, [apiKey, query]);
-
 
     return (
         <div>
@@ -55,7 +42,7 @@ const SearchPage = () => {
                         <p>{movie.overview}</p>
                         <Link href={`/movie/${movie.id}`}>
                             <Image
-                                src={movie.poster_path`https://www.themoviedb.org/t/p/original/${movie.poster_path}`}
+                                src={`https://www.themoviedb.org/t/p/original${movie.poster_path}`}
                                 alt={movie.title}
                                 width={200}
                                 height={400}
