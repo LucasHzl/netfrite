@@ -91,7 +91,6 @@ export default function Home() {
   return (
     <>
       <Navbar setSearch={setSearch} />
-      <button className="h-12 w-8 text-white" onClick={() => handleSearch} >Rechercher</button>
       <HeroBanner background={movies[0]} />
       <main>
 
