@@ -1,36 +1,53 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+Netfrite
 
-## Getting Started
+Netfrite est une application web développée en React.js avec Next.js et Tailwind CSS. 
+Cette application utilise l'API de TMDB pour afficher les films les plus populaires, les mieux notés et les prochaines sorties.
+Sur la page d'accueil, les films sont classés de gauche à droite dans leur carousel.
+Chaque film présent sur le site est cliquable, redirigeant vers une page de détail du film avec toutes les informations pertinentes à son sujet. 
+De plus, des pages de catégorie sont disponibles pour découvrir les films populaires, les mieux notés et les sorties à venir.
+Vous avez également la possibilité d'éffectuer des recherches dans la barre prévue à cet effet.
 
-First, run the development server:
+Fonctionnalités
 
-```bash
+Affichage des films les plus populaires.
+Affichage des films mieux notés.
+Affichage des prochaines sorties.
+Page de détail pour chaque film avec toutes les informations pertinentes.
+Navigation facile entre les différentes catégories de films.
+pages categorielles
+Barre de recherche de films
+
+
+Installation
+
+Cloner le dépôt GitHub :
+git clone https://github.com/LucasHzl/netfrite.git
+
+Accéder au répertoire du projet :
+cd netfrite
+
+Installer les dépendances :
+npm install
+
+Créer un fichier .env.local (à partir de l'exemple .env) à la racine du projet et y ajouter votre access token de l'api TMDB.
+
+Lancer l'application en mode développement :
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Accéder à l'application dans votre navigateur à l'adresse http://localhost:3000.
 
-You can start editing the page by modifying `app/page.js`. The page auto-updates as you edit the file.
+Technologies Utilisées
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
+React.js
+Next.js
+Tailwind CSS
+TMDB API
 
-## Learn More
+Auteur
 
-To learn more about Next.js, take a look at the following resources:
+LucasHzl
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
+Remerciements
 
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+Nous remercions l'équipe de TMDB pour fournir une API riche en données sur les films.
