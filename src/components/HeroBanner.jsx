@@ -7,7 +7,7 @@ export default function HeroBanner({ background }) {
     useEffect(() => {
         const timer = setTimeout(() => {
             setShowImage(true);
-        }, 250);
+        }, 500);
 
         return () => clearTimeout(timer);
     }, [background]);

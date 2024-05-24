@@ -1,6 +1,8 @@
 "use client"
 
 import Navbar from "@/components/Navbar";
+import Footer from "@/components/Footer";
+import Link from "next/link";
 import { useEffect, useState } from "react";
 
 export default function Detail(props) {
@@ -21,7 +23,7 @@ export default function Detail(props) {
         fetch(`https://api.themoviedb.org/3/movie/${props.params.movieId}`, options)
             .then(response => response.json())
             .then(data => {
-                console.log(data);
+                //console.log(data);
                 setMovieDetail(data);
             })
             .catch(error => console.log(error));
@@ -33,15 +35,23 @@ export default function Detail(props) {
 
     return (
         <>
-            <Navbar setSearch={setSearch} />
-            <button className="h-12 w-8 text-white" onClick={handleSearch}>Rechercher</button>
-            {movieDetail && (
-                <div className="text-white">
-                    <h1>{movieDetail.title}</h1>
-                    <p>{movieDetail.overview}</p>
-                </div>
-            )}
-            <p>{props.params.movieId}</p>
+            <Navbar />
+            <div className="h-screen w-screen flex flex-col mb-12">
+                {movieDetail && (
+                    <div className="text-white mb-12 border">
+                        <div className="text-white flex">
+                            <img className="ml-8 mt-8 mb-8" src={`https://www.themoviedb.org/t/p/w500${movieDetail.poster_path}`} alt="" />
+                            <div>
+                                <p className="mt-8">Note : {movieDetail.vote_average}/10</p>
+                                <p className="mt-8">Nombre d'avis : {movieDetail.vote_count}</p>
+                            </div>
+                        </div>
+                        <h2 className="ml-8 mb-8 text-xl">{movieDetail.title}</h2>
+                        <p className="ml-8 text-lg">{movieDetail.overview}</p>
+                    </div>
+                )}
+            </div>
+            <Footer />
         </>
     );
 }
