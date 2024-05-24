@@ -36,21 +36,25 @@ export default function Detail(props) {
     return (
         <>
             <Navbar />
-            <div className="h-screen w-screen flex flex-col mb-12">
-                {movieDetail && (
-                    <div className="text-white mb-12 border">
-                        <div className="text-white flex">
-                            <img className="ml-8 mt-8 mb-8" src={`https://www.themoviedb.org/t/p/w500${movieDetail.poster_path}`} alt="" />
-                            <div>
-                                <p className="mt-8">Note : {movieDetail.vote_average}/10</p>
-                                <p className="mt-8">Nombre d'avis : {movieDetail.vote_count}</p>
-                            </div>
-                        </div>
-                        <h2 className="ml-8 mb-8 text-xl">{movieDetail.title}</h2>
-                        <p className="ml-8 text-lg">{movieDetail.overview}</p>
-                    </div>
-                )}
-            </div>
+            <div className="min-h-screen w-full mb-12 mt-4 px-4 sm:px-8">
+  {movieDetail && (
+    <div className="text-white mb-12 mt-10 flex flex-col sm:flex-row">
+      <img
+        className="mb-8 sm:ml-8 sm:mb-0 sm:w-1/3"
+        src={`https://www.themoviedb.org/t/p/w500${movieDetail.poster_path}`}
+        alt=""
+      />
+      <div className="text-white flex flex-col justify-center items-start sm:ml-8 sm:mr-16 space-y-4 sm:space-y-8">
+        <h2 className="text-xl sm:text-2xl">{movieDetail.title}</h2>
+        <p className="mt-4 sm:mt-8">Date de sortie : {movieDetail.release_date}</p>
+        <p className="mt-4 sm:mt-8">Note : {movieDetail.vote_average}/10</p>
+        <p className="mt-4 sm:mt-8">Nombre d'avis : {movieDetail.vote_count}</p>
+        <p className="mt-4 sm:mt-8 text-lg sm:text-xl">Description : {movieDetail.overview}</p>
+      </div>
+    </div>
+  )}
+</div>
+
             <Footer />
         </>
     );
